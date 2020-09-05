@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -35,15 +34,10 @@ public class Servlet1 extends HttpServlet {
 		
 		out.print("Welcome User :- " + userName);
 		
-		// create a cookie
-		Cookie ck1 = new Cookie("userId", userId);
-		Cookie ck2 = new Cookie("userName", userName);
 		
-		response.addCookie(ck1);
-		response.addCookie(ck2);
-		
-		// create a form for next request
+		// create a form with hidden for next request
 		out.print("<form method='GET' action='servlet2' >");
+		out.print("<input type='hidden' name='username' value='"+ userName +"'>");
 		out.print("<input type='submit' value='Next Request'>");
 		out.print("</form>");
 		out.close();
